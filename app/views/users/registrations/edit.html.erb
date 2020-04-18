@@ -6,30 +6,32 @@
   <div class="field">
     <%= f.label :user_id %><br />
     <%= f.text_field :user_id, autofocus: true %>
-  </div>
+  </div><br>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(現在使用しているパスワードを入力して下さい)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div><br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(新しく使用するパスワードを入力して下さい)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字以上で入力して下さい</em>
     <% end %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  
 
   <div class="actions">
     <%= f.submit "Update" %>
